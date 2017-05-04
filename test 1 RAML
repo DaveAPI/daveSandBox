@@ -1,0 +1,38 @@
+#%RAML 0.8
+title: My Book
+version: 1
+baseUri: http://server/api/{version}
+
+/my-resource:
+  displayName:  Dave's Resource
+  description:  this is my resource, it does things
+  
+  GET:
+    description:  this is my GET method
+      queryparameters:
+      name:
+        displayName:  Dave's
+        type: string
+        description:  R. E. David Tobin
+        example:  Michael Stowe
+        required: false
+        
+        dob:
+          displayName:  DOB
+          type: number
+          description:  My DOB
+          example:  1895 
+          required: yes
+      
+      responces:
+        200: ...
+  
+  POST:
+    description:  this is my post method
+    
+/sub-resource:
+  displayName:  Child Resource
+  description:  this is my sub-resource
+    /sub-resource/ {id}:
+    
+    /{searchFilter}:
