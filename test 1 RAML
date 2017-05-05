@@ -34,7 +34,39 @@ baseUri: http://server/api/{version}
               "dob" : "1985",
               "author"  : "true"
               }
-  
+              
+resourceTyps:
+  - collection:
+    description:  Collection of available
+  <<resourcePathName>>
+    get:
+      description:  Get a list of <<resourcePathName>>.
+      responses:
+        200:
+          body:
+            application/json:
+              example:  |
+                <<exampleGetResponse>>
+
+        301:
+          headers:
+            location:
+              type: string
+                example:  |
+                  <<exampleGetRedirect>>
+        400:
+        
+/resourse-two:
+  type:
+    collection:
+        exampleGetResponse: |
+          {
+          "city"  : "SanFran",
+          "state" : "CA",
+          "postal"  : 94687"
+          {
+        exampleGetRedirect: |
+          http://api.mydomain.com/locations/78
   POST:
     description:  this is my post method
     
