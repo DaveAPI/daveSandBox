@@ -25,7 +25,15 @@ baseUri: http://server/api/{version}
           required: yes
       
       responces:
-        200: ...
+        200:
+          body:
+            application/json:
+              example:  |
+              {
+              "name"  : "Michael Stowe",
+              "dob" : "1985",
+              "author"  : "true"
+              }
   
   POST:
     description:  this is my post method
