@@ -23,8 +23,10 @@ baseUri: http://server/api/{version}
           description:  My DOB
           example:  1895 
           required: yes
-      
-      responces:
+
+  is: [searchable:  {description: "search by location name",  example:  [\"city\"\,"San Fran"\",\"like\"]"}]
+  
+      responses:
         200:
           body:
             application/json:
@@ -56,7 +58,7 @@ resourceTyps:
                   <<exampleGetRedirect>>
         400:
         
-/resourse-two:
+/resource-two:
   type:
     collection:
         exampleGetResponse: |
@@ -67,7 +69,19 @@ resourceTyps:
           {
         exampleGetRedirect: |
           http://api.mydomain.com/locations/78
-  POST:
+
+  traits:
+    -searchable:
+      queryParameters:
+        query:
+          description:  |
+            JSON array
+              [{"field1","value1","operator1"},...]
+              <<descriptio>>
+           example: |
+            <<example>>
+
+POST:
     description:  this is my post method
     
 /sub-resource:
